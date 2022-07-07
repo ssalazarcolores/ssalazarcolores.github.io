@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Dr. Sebastián Salazar Colores"
   avatar           : "profile.png"
-  bio              : "{:Sebastian Salazar Coloress is a researcher in Computer Vision, Artificial Intelligence and Signal Processing. He has been a researcher at the CIO since June 2020.  He has published more than a dozen articles in recognized scientific journals. In addition, he is a reviewer of the most recognized international journals in his area." }
+  bio              : "" }
   location         : "León, Guanajuato, México"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
