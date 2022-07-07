@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Dr. Sebastián Salazar Colores"
   avatar           : "profile.png"
-  bio              : "Sebastian has been a researcher at the CIO since June 2020. He studied a Bachelor's degree in Computer Science at the Universidad Autónoma Benito Juárez de Oaxaca (UABJO). He studied a Master's degree in Electrical Engineering at the University of Guanajuato (UG). D. in Computer Science from the Universidad Autónoma de Querétaro (UAQ). He has carried out research stays in the Universidad Complutense de Madrid (UCM), the Mathematics Research Center (CIMAT), the Polytechnic University of Catalonia in collaboration with the Barcelona Supercomputing Centre (UPC-BSC), the National Institute of Astrophysics, Optics and Electronics (INAOE) and the Optics Research Center (CIO). He has published more than a dozen articles in recognized scientific journals. In addition, he is a reviewer of the most recognized international journals in his area."
+  bio              : "Sebastian has been a researcher at the CIO since June 2020. He has published more than a dozen articles in recognized scientific journals. In addition, he is a reviewer of the most recognized international journals in his area."
   location         : "León, Guanajuato, México"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
@@ -103,7 +103,7 @@ author:
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   linkedin         :
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : "https://orcid.org/my-orcid?orcid=0000-0002-6353-0864"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
