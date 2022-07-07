@@ -1,32 +1,19 @@
-Initio - Free, multipurpose html5 template
-=============
 
-Initio is a fully featured html5 theme which will help you create a stylish personal or company site. 
-6 page layout templates should cover all your development needs. 
-Font Awesome 4, parallax effects and more are included (but can be turned off of course)
+# Boostrap 4 Github Pages
 
+A [Bootstrap 4](https://getbootstrap.com/) template project for [Github Pages](https://pages.github.com/) and [Jekyll](https://jekyllrb.com/).
 
-License
--------
-**Creative Commons Attribution 3.0** - http://creativecommons.org/licenses/by/3.0/
+* A full Bootstrap 4 theme usable both on Github Pages and with a standalone Jekyll.
+* Recompiles Bootstrap from SCSS files, which allows to customize Bootstrap's variables and use Bootstrap themes.
+* Full support of Bootstrap's JavaScript plugins.
+* Supports all features of Github Pages and Jekyll.
 
+[See the website for demonstration and documentation](https://nicolas-van.github.io/bootstrap-4-github-pages/).
 
-Bug tracker
------------
+## Contribution
 
-Found a bug? Please create an issue here on GitHub! 
-https://github.com/pozh/Initio/issues
+[See the contribution guide.](./CONTRIBUTING.md)
 
+## License
 
-
-Credits
--------
-* Design and development: **Sergey Pozhilov** - http://pozhilov.com
-* More free templates by Sergey: http://gettemplate.com
-
-Photos used in the template
--------
-* http://www.publicdomainpictures.net/view-image.php?image=19999
-* http://www.publicdomainpictures.net/view-image.php?image=6354
-* http://imcreator.com/free/business/macbook-computer
-* http://unsplush.com
+[See the license file.](./LICENSE.md)
