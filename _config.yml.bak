@@ -6,8 +6,8 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-locale                   : "es-MX"# en-US
-title                    : "ddddddddd"
+locale                   : "es-MX" # en-US
+title                    : "Personal WEB"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "personal description"
@@ -82,13 +82,13 @@ analytics:
 author:
   name             : "Dr. Sebastián Salazar Colores"
   avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
-  location         : "Location"
+  bio              : "Sebastian has been a researcher at the CIO since June 2020. He studied a Bachelor's degree in Computer Science at the Universidad Autónoma Benito Juárez de Oaxaca (UABJO). He studied a Master's degree in Electrical Engineering at the University of Guanajuato (UG). D. in Computer Science from the Universidad Autónoma de Querétaro (UAQ). He has carried out research stays in the Universidad Complutense de Madrid (UCM), the Mathematics Research Center (CIMAT), the Polytechnic University of Catalonia in collaboration with the Barcelona Supercomputing Centre (UPC-BSC), the National Institute of Astrophysics, Optics and Electronics (INAOE) and the Optics Research Center (CIO). He has published more than a dozen articles in recognized scientific journals. In addition, he is a reviewer of the most recognized international journals in his area."
+  location         : "León, Guanajuato, México"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
+  googlescholar    : "https://scholar.google.com.mx/citations?user=WQcH3sEAAAAJ&hl=es"
   email            :
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  researchgate     : "https://www.researchgate.net/profile/Sebastian-Salazar-Colores"
   uri              :
   bitbucket        :
   codepen          :
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "https://github.com/ssalazarcolores?tab=repositories"
   google_plus      :
   keybase          :
   instagram        :
