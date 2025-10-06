@@ -1,14 +1,55 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
-excerpt: "About me"
+title: "Dr. Sebastián Salazar-Colores | Investigador Titular A"
+excerpt: "Investigador especializado en Inteligencia Artificial Médica y Visión por Computadora"
 author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [academicpages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the respository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. You can fork [this repository](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and markdown files, add your own PDFs and other content, and have your own site for free, with no ads! An older version of this template powers my own personal website at [stuartgeiger.com](http://stuartgeiger.com), which uses [this Github repository](https://github.com/staeiou/staeiou.github.io).
+## 👋 ¡Hola! Soy el Dr. Sebastián Salazar-Colores
+
+**Investigador Titular A** en el Centro de Investigaciones en Óptica (CIO) y especialista en **Inteligencia Artificial Médica** y **Visión por Computadora**.
+
+### 🎯 Mi Misión
+Desarrollar soluciones de IA que tengan **impacto real en la sociedad**, especialmente en el área médica. Mi trabajo busca mejorar diagnósticos, optimizar tratamientos y salvar vidas mediante la aplicación de algoritmos avanzados de procesamiento de imágenes.
+
+### 📊 Métricas de Impacto
+- **25+ publicaciones** en revistas científicas JCR
+- **15+ tesis dirigidas** (licenciatura y maestría)
+- **4 libros publicados** (2021-2023)
+- **SNI Nivel 1** consolidado
+- **83+ citas** en los últimos años
+
+### 🏥 Principales Proyectos Médicos
+- **Desahumado laparoscópico** con redes neuronales generativas
+- **Detección dental automatizada** usando frameworks YOLO
+- **Plataforma médica web** para el Hospital Regional del Bajío
+- **Diagnóstico pulmonar** mediante deep learning
+
+### 🎓 Formación Académica
+- **Doctorado en Ciencias de la Computación** - Universidad Autónoma de Querétaro
+- **Maestría en Ingeniería Eléctrica** - Universidad de Guanajuato
+- **Licenciatura en Computación** - Universidad Autónoma Benito Juárez de Oaxaca
+
+### 🌍 Colaboraciones Internacionales
+He realizado estancias de investigación en:
+- **Barcelona Supercomputing Center** (España)
+- **Universidad Complutense de Madrid** (España)
+- **Centro de Investigación en Matemáticas** (CIMAT)
+- **INAOE** y otras instituciones nacionales
+
+---
+
+### 📬 ¿Interesado en colaborar?
+Actualmente busco estudiantes talentosos para proyectos de:
+- 🤖 Inteligencia Artificial Médica
+- 👁️ Visión por Computadora
+- 🏥 Procesamiento de Imágenes Biomédicas
+- 🚾 Agricultura de Precisión
+
+[📧 Contáctame](mailto:sebastian.salazar@cio.mx) | [🔬 Ver Publicaciones](/publications/) | [👥 Ver Estudiantes](/students/)
 
 A data-driven personal website
 ======

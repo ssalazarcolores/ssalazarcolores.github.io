@@ -1,22 +1,25 @@
 # main links links
 main:
-  - title: "Publications"
+  - title: "🏠 Inicio"
+    url: /
+
+  - title: "📊 Acerca de Mí"
+    url: /about/
+
+  - title: "🔬 Publicaciones"
     url: /publications/
 
-  - title: "Talks"
-    url: /talks/    
+  - title: "👥 Estudiantes"
+    url: /students/
 
-  - title: "Teaching"
-    url: /teaching/    
-    
-  - title: "Portfolio"
-    url: /portfolio/
-        
-  - title: "Blog Posts"
-    url: /year-archive/
-    
-  - title: "CV"
-    url: /cv/
-    
-  - title: "Guide"
-    url: /markdown/
+  - title: "🎤 Charlas"
+    url: /talks/
+
+  - title: "🎓 Docencia"
+    url: /teaching/
+
+  - title: "🚀 Proyectos"
+    url: /projects/
+
+  - title: "📧 Contacto"
+    url: /contact/
