@@ -1,0 +1,257 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+
+const pubsAll = (await getCollection("publications")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const talksAll = (await getCollection("talks")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const projectsAll = await getCollection("projects");
+const teachingAll = (await getCollection("teaching")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const pubsByYear = pubsAll.reduce((acc, p) => {
+  const y = p.data.date.getUTCFullYear();
+  (acc[y] ||= []).push(p);
+  return acc;
+}, {} as Record<number, typeof pubsAll>);
+const years = Object.keys(pubsByYear).map(Number).sort((a, b) => b - a);
+
+// Pretty author parsing — strip the leading author list noise from citations for display
+function cleanCite(c: string) {
+  return c.replace(/&quot;/g, '"').replace(/&amp;/g, "&");
+}
+
+const selectedPubs = pubsAll.slice(0, 6);
+
+const students = [
+  { name: "Daniel A. Gutiérrez Jiménez", institution: "Maestría, CIO", year: "2024", topic: "Análisis no invasivo de flujos en reactores químicos industriales mediante aprendizaje profundo." },
+  { name: "Juan M. Chávez Medina", institution: "Maestría, CIO", year: "2023", topic: "Detección de carcinoma ductal invasivo (CDI) vía imágenes histopatológicas." },
+  { name: "Enrique Mena Camilo", institution: "Maestría, UAQ", year: "2024", topic: "Ensamble de modelos de aprendizaje profundo para clasificación de riesgo de coledocolitiasis." },
+  { name: "Sheila Leyva López", institution: "Maestría, UAQ", year: "2023", topic: "Predicción del daño pulmonar ocasionado por fibrosis pulmonar idiopática." },
+  { name: "Gerardo Hernández Nava", institution: "Maestría, UAQ", year: "2023", topic: "Predicción de eventos epilépticos mediante técnicas de aprendizaje profundo." },
+  { name: "José H. León Chávez", institution: "Maestría, UAQ", year: "2021", topic: "Odometría y mapeo de lugares de difícil acceso mediante técnicas SLAM." },
+  { name: "Yamanki Santander Cruz", institution: "Maestría, UAQ", year: "2021", topic: "Detección de indicadores cognitivos de demencia temprana." },
+  { name: "Alexa F. Gutiérrez Medrano", institution: "Licenciatura, UPB", year: "2021", topic: "Detección de COVID-19 mediante imágenes de rayos X y aprendizaje profundo." },
+  { name: "Tania J. Mendoza Torres", institution: "Licenciatura, UPB", year: "2021", topic: "Detección de melanomas vía redes neuronales convolucionales." },
+];
+
+const awards = [
+  { year: "2019", text: "Premio al mejor trabajo de estudiante, MICAI" },
+  { year: "2019", text: "Doctorado con honores, UAQ" },
+  { year: "2015", text: "Maestría con honores, UG" },
+];
+---
+
+<Base>
+  <Nav />
+
+  <Hero />
+
+  <main class="container-prose pb-32">
+    <!-- ABOUT (longer bio paragraph in editorial voice) -->
+    <section id="about" class="mt-12">
+      <p class="text-base md:text-lg leading-relaxed" style="color: var(--c-fg-soft);">
+        Mi trabajo se centra en la aplicación de aprendizaje profundo a problemas de
+        dominio específico. En <strong style="color: var(--c-fg);">imagen médica</strong>
+        he trabajado en desahumado laparoscópico, predicción clínica de hernia incisional
+        y coledocolitiasis, y detección de epilepsia vía EEG. En
+        <strong style="color: var(--c-fg);">agricultura de precisión</strong> aplico
+        modelos de visión fundacionales (DINOv2, SigLIP, EVA-02) al diagnóstico nutricional
+        de cultivos y detección de calidad de productos. Lidero un clúster multi-GPU
+        (4× RTX 3090, A6000, 4060 Ti) para investigación y formación de talento.
+      </p>
+      <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: var(--c-fg-soft);">
+        Profesor invitado en posgrado en la <strong style="color: var(--c-fg);">Universidad de Guanajuato</strong>
+        (Doctorado en Ingeniería) y la <strong style="color: var(--c-fg);">Universidad Autónoma de Querétaro</strong>
+        (Maestría en Ciencias de la IA). Doctor en Ciencias de la Computación con honores por la UAQ (2019).
+      </p>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section id="work">
+      <h2 class="section-label">selected work · {selectedPubs.length} of {pubsAll.length}</h2>
+      <div>
+        {selectedPubs.map((p) => (
+          <article class="paper-row">
+            <div class="year">{p.data.date.getUTCFullYear()}</div>
+            <div class="body">
+              <div class="title">
+                {p.data.paperurl ? (
+                  <a href={p.data.paperurl} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
+                    {p.data.title}
+                  </a>
+                ) : (
+                  <span>{p.data.title}</span>
+                )}
+              </div>
+              <div class="meta">
+                <em>{p.data.venue}</em>
+                {p.data.paperurl && (
+                  <>
+                    <span style="color: var(--c-border);"> · </span>
+                    <a href={p.data.paperurl} target="_blank" rel="noopener" class="mono text-xs">[link]</a>
+                  </>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="mt-3">
+        <a href="#all-publications" class="link-accent">↓ ver las {pubsAll.length}</a>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-label">projects · prototypes</h2>
+      <div class="grid sm:grid-cols-2 gap-x-6 gap-y-1">
+        {projectsAll.map((proj) => {
+          const videoMatch = proj.body?.match(/\((https:\/\/(?:www\.youtube\.com|youtu\.be)[^\s)]+)\)/);
+          const video = videoMatch ? videoMatch[1] : undefined;
+          return (
+            <article class="paper-row" style="grid-template-columns: 1fr;">
+              <div class="body">
+                <div class="title">
+                  {video ? (
+                    <a href={video} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
+                      {proj.data.title} <span class="mono text-xs" style="color: var(--c-accent);">▶</span>
+                    </a>
+                  ) : (
+                    <span>{proj.data.title}</span>
+                  )}
+                </div>
+                <div class="meta">{proj.data.excerpt}</div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- ALL PUBLICATIONS -->
+    <section id="all-publications">
+      <h2 class="section-label">publications · {pubsAll.length} total</h2>
+      {years.map((y) => (
+        <div class="mb-6">
+          <div class="mono text-xs mb-1 mt-4" style="color: var(--c-fg-muted);">{y}</div>
+          {pubsByYear[y].map((p) => (
+            <article class="paper-row">
+              <div class="year"></div>
+              <div class="body">
+                <div class="title" style="font-size: 0.95rem;">
+                  {p.data.paperurl ? (
+                    <a href={p.data.paperurl} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
+                      {p.data.title}
+                    </a>
+                  ) : (
+                    <span>{p.data.title}</span>
+                  )}
+                </div>
+                <div class="meta" style="font-size: 0.82rem;">
+                  <em>{p.data.venue}</em>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      ))}
+    </section>
+
+    <!-- TALKS -->
+    <section id="talks">
+      <h2 class="section-label">talks · {talksAll.length}</h2>
+      {talksAll.map((t) => (
+        <article class="paper-row">
+          <div class="year">{t.data.date.getUTCFullYear()}</div>
+          <div class="body">
+            <div class="title" style="font-size: 0.95rem;">{t.data.title}</div>
+            <div class="meta" style="font-size: 0.82rem;">
+              <em>{t.data.venue}</em>
+              {t.data.location && (
+                <>
+                  <span style="color: var(--c-border);"> · </span>
+                  <span>{t.data.location}</span>
+                </>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching">
+      <h2 class="section-label">teaching</h2>
+      {teachingAll.map((t) => (
+        <article class="paper-row">
+          <div class="year">{t.data.date.getUTCFullYear()}</div>
+          <div class="body">
+            <div class="title">{t.data.title}</div>
+            <div class="meta">
+              <em>{t.data.venue}</em>
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <!-- STUDENTS -->
+    <section id="students">
+      <h2 class="section-label">graduated students · {students.length}</h2>
+      {students.map((s) => (
+        <article class="paper-row">
+          <div class="year">{s.year}</div>
+          <div class="body">
+            <div class="title" style="font-size: 0.95rem;">{s.name}</div>
+            <div class="meta" style="font-size: 0.85rem;">
+              <em>{s.institution}</em> <span style="color: var(--c-border);">·</span> {s.topic}
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards">
+      <h2 class="section-label">awards</h2>
+      {awards.map((a) => (
+        <article class="paper-row">
+          <div class="year">{a.year}</div>
+          <div class="body">
+            <div class="title">{a.text}</div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mt-16">
+      <h2 class="section-label">contact</h2>
+      <p class="text-base leading-relaxed mt-2" style="color: var(--c-fg-soft);">
+        Si te interesa colaborar en proyectos de IA aplicada a imagen médica,
+        agricultura de precisión o procesamiento de señales biomédicas, escríbeme.
+        Recibo solicitudes de estudiantes de posgrado interesados en estos temas.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <a href="mailto:s.salazarcolores@gmail.com" class="btn-mono" style="border-bottom: none;">s.salazarcolores@gmail.com</a>
+        <a href="https://scholar.google.com.mx/citations?user=WQcH3sEAAAAJ" target="_blank" rel="noopener" class="btn-mono" style="border-bottom: none;">scholar</a>
+        <a href="https://orcid.org/0000-0002-6353-0864" target="_blank" rel="noopener" class="btn-mono" style="border-bottom: none;">orcid</a>
+        <a href="https://github.com/ssalazarcolores" target="_blank" rel="noopener" class="btn-mono" style="border-bottom: none;">github</a>
+      </div>
+    </section>
+
+    <footer class="mt-24 pt-8 mono text-xs" style="color: var(--c-fg-muted); border-top: 1px solid var(--c-border);">
+      <div class="flex justify-between flex-wrap gap-2">
+        <span>© {new Date().getFullYear()} Sebastián Salazar-Colores</span>
+        <span>built with astro · <a href="https://github.com/ssalazarcolores/ssalazarcolores.github.io" style="color: var(--c-fg-muted); border-bottom: none;" target="_blank" rel="noopener">source</a></span>
+      </div>
+    </footer>
+  </main>
+</Base>
