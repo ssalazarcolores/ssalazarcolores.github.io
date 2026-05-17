@@ -8,4 +8,4 @@ date: 2020-10-23
 location: "León, Guanajuato, México"
 ---
 
-Seminario sobre la metodología de desahumado de imágenes laparoscópicas mediante una red generativa adversaria guiada por el canal oscuro.
+Seminario sobre la metodología de desmoking de imágenes laparoscópicas mediante una red generativa adversaria guiada por el canal oscuro.

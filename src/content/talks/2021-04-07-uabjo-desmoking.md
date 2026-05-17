@@ -8,4 +8,4 @@ date: 2021-04-07
 location: "Oaxaca, México"
 ---
 
-Plática en mi alma máter sobre el trabajo de desahumado laparoscópico con redes generativas.
+Plática en mi alma máter sobre el trabajo de desmoking laparoscópico con redes generativas.

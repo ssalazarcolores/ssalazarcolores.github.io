@@ -200,6 +200,13 @@ hr {
   font-size: 0.85rem;
 }
 
+/* Editorial prose: justified paragraphs like gwern.net */
+.prose-justify {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
 /* Wider container for hero */
 .container-prose {
   max-width: 44rem;

@@ -22,9 +22,9 @@ const pubsByYear = pubsAll.reduce((acc, p) => {
 }, {} as Record<number, typeof pubsAll>);
 const years = Object.keys(pubsByYear).map(Number).sort((a, b) => b - a);
 
-// Pretty author parsing — strip the leading author list noise from citations for display
-function cleanCite(c: string) {
-  return c.replace(/&quot;/g, '"').replace(/&amp;/g, "&");
+// Always link to *something* — prefer the paper URL, fall back to a Google Scholar search
+function paperLink(p: { data: { title: string; paperurl?: string } }) {
+  return p.data.paperurl ?? `https://scholar.google.com/scholar?q=${encodeURIComponent(p.data.title)}`;
 }
 
 const selectedPubs = pubsAll.slice(0, 6);
@@ -56,15 +56,14 @@ const awards = [
   <main class="container-prose pb-32">
     <!-- ABOUT (longer bio paragraph in editorial voice) -->
     <section id="about" class="mt-12">
-      <p class="text-base md:text-lg leading-relaxed" style="color: var(--c-fg-soft);">
+      <p class="text-base md:text-lg leading-relaxed prose-justify" style="color: var(--c-fg-soft);">
         Mi trabajo se centra en la aplicación de aprendizaje profundo a problemas de
         dominio específico. En <strong style="color: var(--c-fg);">imagen médica</strong>
-        he trabajado en desahumado laparoscópico, predicción clínica de hernia incisional
+        he trabajado en <em>desmoking</em> laparoscópico, predicción clínica de hernia incisional
         y coledocolitiasis, y detección de epilepsia vía EEG. En
         <strong style="color: var(--c-fg);">agricultura de precisión</strong> aplico
         modelos de visión fundacionales (DINOv2, SigLIP, EVA-02) al diagnóstico nutricional
-        de cultivos y detección de calidad de productos. Lidero un clúster multi-GPU
-        (4× RTX 3090, A6000, 4060 Ti) para investigación y formación de talento.
+        de cultivos y detección de calidad de productos.
       </p>
       <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: var(--c-fg-soft);">
         Profesor invitado en posgrado en la <strong style="color: var(--c-fg);">Universidad de Guanajuato</strong>
@@ -82,22 +81,25 @@ const awards = [
             <div class="year">{p.data.date.getUTCFullYear()}</div>
             <div class="body">
               <div class="title">
-                {p.data.paperurl ? (
-                  <a href={p.data.paperurl} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
-                    {p.data.title}
-                  </a>
-                ) : (
-                  <span>{p.data.title}</span>
-                )}
+                <a href={paperLink(p)} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
+                  {p.data.title}
+                </a>
               </div>
               <div class="meta">
                 <em>{p.data.venue}</em>
-                {p.data.paperurl && (
-                  <>
-                    <span style="color: var(--c-border);"> · </span>
-                    <a href={p.data.paperurl} target="_blank" rel="noopener" class="mono text-xs">[link]</a>
-                  </>
-                )}
+                <span class="ml-2 mono text-xs" style="color: var(--c-fg-muted);">
+                  {p.data.paperurl ? (
+                    <a href={p.data.paperurl} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">pdf</a>
+                  ) : (
+                    <a href={paperLink(p)} target="_blank" rel="noopener" style="color: var(--c-fg-muted); border-bottom: none;">scholar</a>
+                  )}
+                  {p.data.github && (
+                    <>
+                      <span style="color: var(--c-border);"> · </span>
+                      <a href={p.data.github} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">code</a>
+                    </>
+                  )}
+                </span>
               </div>
             </div>
           </article>
@@ -115,19 +117,34 @@ const awards = [
         {projectsAll.map((proj) => {
           const videoMatch = proj.body?.match(/\((https:\/\/(?:www\.youtube\.com|youtu\.be)[^\s)]+)\)/);
           const video = videoMatch ? videoMatch[1] : undefined;
+          const primary = video ?? proj.data.github;
           return (
             <article class="paper-row" style="grid-template-columns: 1fr;">
               <div class="body">
                 <div class="title">
-                  {video ? (
-                    <a href={video} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
-                      {proj.data.title} <span class="mono text-xs" style="color: var(--c-accent);">▶</span>
+                  {primary ? (
+                    <a href={primary} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
+                      {proj.data.title}
+                      {video && <span class="mono text-xs ml-1" style="color: var(--c-accent);">▶</span>}
                     </a>
                   ) : (
                     <span>{proj.data.title}</span>
                   )}
                 </div>
-                <div class="meta">{proj.data.excerpt}</div>
+                <div class="meta">
+                  {proj.data.excerpt}
+                  {(video || proj.data.github) && (
+                    <span class="ml-2 mono" style="font-size: 0.72rem;">
+                      {video && (
+                        <a href={video} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">video</a>
+                      )}
+                      {video && proj.data.github && <span style="color: var(--c-border);"> · </span>}
+                      {proj.data.github && (
+                        <a href={proj.data.github} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">code</a>
+                      )}
+                    </span>
+                  )}
+                </div>
               </div>
             </article>
           );
@@ -146,16 +163,25 @@ const awards = [
               <div class="year"></div>
               <div class="body">
                 <div class="title" style="font-size: 0.95rem;">
-                  {p.data.paperurl ? (
-                    <a href={p.data.paperurl} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
-                      {p.data.title}
-                    </a>
-                  ) : (
-                    <span>{p.data.title}</span>
-                  )}
+                  <a href={paperLink(p)} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
+                    {p.data.title}
+                  </a>
                 </div>
                 <div class="meta" style="font-size: 0.82rem;">
                   <em>{p.data.venue}</em>
+                  <span class="ml-2 mono" style="font-size: 0.7rem; color: var(--c-fg-muted);">
+                    {p.data.paperurl ? (
+                      <a href={p.data.paperurl} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">pdf</a>
+                    ) : (
+                      <a href={paperLink(p)} target="_blank" rel="noopener" style="color: var(--c-fg-muted); border-bottom: none;">scholar</a>
+                    )}
+                    {p.data.github && (
+                      <>
+                        <span style="color: var(--c-border);"> · </span>
+                        <a href={p.data.github} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">code</a>
+                      </>
+                    )}
+                  </span>
                 </div>
               </div>
             </article>
@@ -240,7 +266,7 @@ const awards = [
         Recibo solicitudes de estudiantes de posgrado interesados en estos temas.
       </p>
       <div class="mt-4 flex flex-wrap gap-2">
-        <a href="mailto:s.salazarcolores@gmail.com" class="btn-mono" style="border-bottom: none;">s.salazarcolores@gmail.com</a>
+        <a href="mailto:sebastian.salazar@cio.mx" class="btn-mono" style="border-bottom: none;">sebastian.salazar@cio.mx</a>
         <a href="https://scholar.google.com.mx/citations?user=WQcH3sEAAAAJ" target="_blank" rel="noopener" class="btn-mono" style="border-bottom: none;">scholar</a>
         <a href="https://orcid.org/0000-0002-6353-0864" target="_blank" rel="noopener" class="btn-mono" style="border-bottom: none;">orcid</a>
         <a href="https://github.com/ssalazarcolores" target="_blank" rel="noopener" class="btn-mono" style="border-bottom: none;">github</a>

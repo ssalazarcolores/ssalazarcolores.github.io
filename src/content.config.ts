@@ -9,6 +9,7 @@ const publications = defineCollection({
     venue: z.string(),
     citation: z.string(),
     paperurl: z.string().url().optional(),
+    github: z.string().url().optional(),
     permalink: z.string().optional(),
   }),
 });
@@ -30,6 +31,7 @@ const projects = defineCollection({
     title: z.string(),
     excerpt: z.string(),
     video: z.string().url().optional(),
+    github: z.string().url().optional(),
     order: z.number().optional(),
   }),
 });

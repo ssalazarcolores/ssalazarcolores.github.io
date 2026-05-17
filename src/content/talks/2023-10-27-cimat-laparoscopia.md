@@ -8,4 +8,4 @@ date: 2023-10-27
 location: "Guanajuato, México"
 ---
 
-Seminario sobre aplicaciones de inteligencia artificial al procesamiento de imágenes laparoscópicas: desahumado, segmentación y análisis.
+Seminario sobre aplicaciones de inteligencia artificial al procesamiento de imágenes laparoscópicas: desmoking, segmentación y análisis.
