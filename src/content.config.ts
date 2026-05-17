@@ -10,6 +10,7 @@ const publications = defineCollection({
     citation: z.string(),
     paperurl: z.string().url().optional(),
     github: z.string().url().optional(),
+    thumbnail: z.string().optional(),
     permalink: z.string().optional(),
   }),
 });
