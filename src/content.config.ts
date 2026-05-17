@@ -22,6 +22,7 @@ const talks = defineCollection({
     venue: z.string(),
     type: z.string().optional(),
     location: z.string().optional(),
+    url: z.string().url().optional(),
   }),
 });
 

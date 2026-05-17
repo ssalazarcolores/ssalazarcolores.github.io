@@ -30,21 +30,20 @@ function paperLink(p: { data: { title: string; paperurl?: string } }) {
 const selectedPubs = pubsAll.slice(0, 6);
 
 const students = [
-  { name: "Daniel A. Gutiérrez Jiménez", institution: "Maestría, CIO", year: "2024", topic: "Análisis no invasivo de flujos en reactores químicos industriales mediante aprendizaje profundo." },
-  { name: "Juan M. Chávez Medina", institution: "Maestría, CIO", year: "2023", topic: "Detección de carcinoma ductal invasivo (CDI) vía imágenes histopatológicas." },
-  { name: "Enrique Mena Camilo", institution: "Maestría, UAQ", year: "2024", topic: "Ensamble de modelos de aprendizaje profundo para clasificación de riesgo de coledocolitiasis." },
-  { name: "Sheila Leyva López", institution: "Maestría, UAQ", year: "2023", topic: "Predicción del daño pulmonar ocasionado por fibrosis pulmonar idiopática." },
-  { name: "Gerardo Hernández Nava", institution: "Maestría, UAQ", year: "2023", topic: "Predicción de eventos epilépticos mediante técnicas de aprendizaje profundo." },
-  { name: "José H. León Chávez", institution: "Maestría, UAQ", year: "2021", topic: "Odometría y mapeo de lugares de difícil acceso mediante técnicas SLAM." },
-  { name: "Yamanki Santander Cruz", institution: "Maestría, UAQ", year: "2021", topic: "Detección de indicadores cognitivos de demencia temprana." },
-  { name: "Alexa F. Gutiérrez Medrano", institution: "Licenciatura, UPB", year: "2021", topic: "Detección de COVID-19 mediante imágenes de rayos X y aprendizaje profundo." },
-  { name: "Tania J. Mendoza Torres", institution: "Licenciatura, UPB", year: "2021", topic: "Detección de melanomas vía redes neuronales convolucionales." },
+  { name: "Daniel A. Gutiérrez Jiménez", institution: "Maestría, CIO", year: "2024", topic: "Análisis no invasivo de flujos en reactores químicos industriales mediante aprendizaje profundo.", thesis: "https://cio.repositorioinstitucional.mx/jspui/handle/1002/1342" },
+  { name: "Juan M. Chávez Medina", institution: "Maestría, CIO", year: "2023", topic: "Detección de carcinoma ductal invasivo (CDI) vía imágenes histopatológicas.", thesis: "https://cio.repositorioinstitucional.mx/jspui/handle/1002/1286" },
+  { name: "Enrique Mena Camilo", institution: "Maestría, UAQ", year: "2024", topic: "Ensamble de modelos de aprendizaje profundo para clasificación de riesgo de coledocolitiasis.", thesis: "https://ri-ng.uaq.mx/handle/123456789/11247" },
+  { name: "Sheila Leyva López", institution: "Maestría, UAQ", year: "2023", topic: "Predicción del daño pulmonar ocasionado por fibrosis pulmonar idiopática.", thesis: null },
+  { name: "Gerardo Hernández Nava", institution: "Maestría, UAQ", year: "2023", topic: "Predicción de eventos epilépticos mediante técnicas de aprendizaje profundo.", thesis: "https://ri-ng.uaq.mx/handle/123456789/9749" },
+  { name: "José H. León Chávez", institution: "Maestría, UAQ", year: "2021", topic: "Odometría y mapeo de lugares de difícil acceso mediante técnicas SLAM.", thesis: "https://ri-ng.uaq.mx/handle/123456789/3336" },
+  { name: "Yamanki Santander Cruz", institution: "Maestría, UAQ", year: "2021", topic: "Detección de indicadores cognitivos de demencia temprana.", thesis: "https://ri-ng.uaq.mx/handle/123456789/3805" },
+  { name: "Alexa F. Gutiérrez Medrano", institution: "Licenciatura, UPB", year: "2021", topic: "Detección de COVID-19 mediante imágenes de rayos X y aprendizaje profundo.", thesis: null },
+  { name: "Tania J. Mendoza Torres", institution: "Licenciatura, UPB", year: "2021", topic: "Detección de melanomas vía redes neuronales convolucionales.", thesis: null },
 ];
 
 const awards = [
+  { year: "2023", text: "Co-Chair, 21° Congreso Nacional de Mecatrónica" },
   { year: "2019", text: "Premio al mejor trabajo de estudiante, MICAI" },
-  { year: "2019", text: "Doctorado con honores, UAQ" },
-  { year: "2015", text: "Maestría con honores, UG" },
 ];
 ---
 
@@ -57,18 +56,19 @@ const awards = [
     <!-- ABOUT (longer bio paragraph in editorial voice) -->
     <section id="about" class="mt-12">
       <p class="text-base md:text-lg leading-relaxed prose-justify" style="color: var(--c-fg-soft);">
-        Mi trabajo se centra en la aplicación de aprendizaje profundo a problemas de
-        dominio específico. En <strong style="color: var(--c-fg);">imagen médica</strong>
-        he trabajado en <em>desmoking</em> laparoscópico, predicción clínica de hernia incisional
-        y coledocolitiasis, y detección de epilepsia vía EEG. En
-        <strong style="color: var(--c-fg);">agricultura de precisión</strong> aplico
-        modelos de visión fundacionales (DINOv2, SigLIP, EVA-02) al diagnóstico nutricional
-        de cultivos y detección de calidad de productos.
+        Mi trabajo cruza tres dominios donde el aprendizaje profundo todavía falla con imágenes reales:
+        el <strong style="color: var(--c-fg);">quirófano</strong> (laparoscopía obstruida por humo,
+        detección de cáncer), el <strong style="color: var(--c-fg);">campo</strong> (diagnóstico
+        nutricional de cultivos, calidad post-cosecha) y la <strong style="color: var(--c-fg);">clínica</strong>
+        (predicción no invasiva de hernia incisional, coledocolitiasis, epilepsia vía EEG).
       </p>
-      <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: var(--c-fg-soft);">
-        Profesor invitado en posgrado en la <strong style="color: var(--c-fg);">Universidad de Guanajuato</strong>
-        (Doctorado en Ingeniería) y la <strong style="color: var(--c-fg);">Universidad Autónoma de Querétaro</strong>
-        (Maestría en Ciencias de la IA). Doctor en Ciencias de la Computación con honores por la UAQ (2019).
+      <p class="mt-4 text-base md:text-lg leading-relaxed prose-justify" style="color: var(--c-fg-soft);">
+        Llevo ocho años publicando una línea sostenida sobre restauración de imagen
+        — <em>dehazing</em>, <em>desmoking</em>, <em>sky detection</em> — que empezó como tesis
+        doctoral y terminó traduciéndose a video laparoscópico en tiempo real con cirujanos.
+        Soy profesor invitado en el Doctorado en Ingeniería de la UG y la Maestría en IA de la UAQ;
+        he graduado <a href="#students" style="color: var(--c-fg-soft); border-bottom: 1px dotted var(--c-fg-muted);">9 estudiantes</a>
+        y publico el código de los métodos que puedo abrir.
       </p>
     </section>
 
@@ -197,7 +197,13 @@ const awards = [
         <article class="paper-row">
           <div class="year">{t.data.date.getUTCFullYear()}</div>
           <div class="body">
-            <div class="title" style="font-size: 0.95rem;">{t.data.title}</div>
+            <div class="title" style="font-size: 0.95rem;">
+              {t.data.url ? (
+                <a href={t.data.url} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">{t.data.title}</a>
+              ) : (
+                <span>{t.data.title}</span>
+              )}
+            </div>
             <div class="meta" style="font-size: 0.82rem;">
               <em>{t.data.venue}</em>
               {t.data.location && (
@@ -205,6 +211,11 @@ const awards = [
                   <span style="color: var(--c-border);"> · </span>
                   <span>{t.data.location}</span>
                 </>
+              )}
+              {t.data.url && (
+                <span class="ml-2 mono" style="font-size: 0.7rem;">
+                  <a href={t.data.url} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">memoria</a>
+                </span>
               )}
             </div>
           </div>
@@ -235,9 +246,20 @@ const awards = [
         <article class="paper-row">
           <div class="year">{s.year}</div>
           <div class="body">
-            <div class="title" style="font-size: 0.95rem;">{s.name}</div>
+            <div class="title" style="font-size: 0.95rem;">
+              {s.thesis ? (
+                <a href={s.thesis} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">{s.name}</a>
+              ) : (
+                <span>{s.name}</span>
+              )}
+            </div>
             <div class="meta" style="font-size: 0.85rem;">
               <em>{s.institution}</em> <span style="color: var(--c-border);">·</span> {s.topic}
+              {s.thesis && (
+                <span class="ml-1 mono" style="font-size: 0.72rem;">
+                  <a href={s.thesis} target="_blank" rel="noopener" style="color: var(--c-accent); border-bottom: none;">tesis</a>
+                </span>
+              )}
             </div>
           </div>
         </article>
