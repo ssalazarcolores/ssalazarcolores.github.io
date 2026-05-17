@@ -7,10 +7,10 @@
 
 # Site Settings
 locale                   : "es-MX" # en-US
-title                    : "Personal WEB"
-title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "personal description"
+title                    : "Dr. Sebastián Salazar-Colores"
+title_separator          : "|"
+name                     : &name "Dr. Sebastián Salazar-Colores"
+description              : &description "Investigador en el Centro de Investigaciones en Óptica (CIO). SNI Nivel I. Aprendizaje profundo aplicado a imagen médica, agricultura de precisión y procesamiento de señales biomédicas."
 url                      : https://ssalazarcolores.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ssalazarcolores/ssalazarcolores.github.io"
@@ -82,14 +82,12 @@ analytics:
 author:
   name             : "Dr. Sebastián Salazar Colores"
   avatar           : "profile.png"
-  bio              : ""
+  bio              : "Investigador Titular A · SNI Nivel I · IA aplicada a imagen médica y agricultura de precisión."
   location         : "León, Guanajuato, México"
-  employer         : "Centro de Investigaciones en Óptica
-                    \
-                    (CIO)"
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  employer         : "Centro de Investigaciones en Óptica (CIO)"
+  pubmed           :
   googlescholar    : "https://scholar.google.com.mx/citations?user=WQcH3sEAAAAJ&hl=es"
-  email            :
+  email            : "s.salazarcolores@gmail.com"
   researchgate     : "https://www.researchgate.net/profile/Sebastian-Salazar-Colores"
   uri              :
   bitbucket        :
@@ -111,7 +109,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          :
   vine             :
   weibo            :
   xing             :

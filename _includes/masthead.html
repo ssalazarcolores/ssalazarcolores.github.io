@@ -15,9 +15,29 @@
             {% endif %}
             <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
+          <li class="masthead__menu-item">
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="toggleTheme()">
+              <span id="theme-toggle-icon">◐</span>
+            </button>
+          </li>
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
   </div>
 </div>
+
+<script>
+  function toggleTheme() {
+    var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e) {}
+    var icon = document.getElementById('theme-toggle-icon');
+    if (icon) icon.textContent = next === 'dark' ? '☀' : '◐';
+  }
+  (function() {
+    var icon = document.getElementById('theme-toggle-icon');
+    if (icon && document.documentElement.getAttribute('data-theme') === 'dark') icon.textContent = '☀';
+  })();
+</script>

@@ -39,3 +39,6 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+/* Modern overrides — loaded last so they win the cascade */
+@import "modern";

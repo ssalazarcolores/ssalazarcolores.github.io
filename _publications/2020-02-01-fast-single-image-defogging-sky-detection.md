@@ -1,0 +1,8 @@
+---
+title: "Fast single image defogging with robust sky detection"
+collection: publications
+permalink: /publication/2020-fast-single-image-defogging-sky-detection
+date: 2020-02-01
+venue: 'IEEE Access'
+citation: 'Salazar-Colores, S., Moya-Sánchez, E. U., Ramos-Arreguín, J.-M., et al. (2020). &quot;Fast single image defogging with robust sky detection.&quot; IEEE Access, 8, 149176–149189.'
+---
