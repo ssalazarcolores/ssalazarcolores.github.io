@@ -7,4 +7,5 @@ venue: 'IEEE Access'
 paperurl: 'https://doi.org/10.1109/access.2020.3038437'
 github: 'https://github.com/ssalazarcolores/Desmoking-laparoscopy-surgery-images-using-an-image-to-image-translation-guided-by-an-embedded-Dark-'
 citation: 'Salazar-Colores, S., Jiménez, H. M., Ortiz-Echeverri, C. J., & Flores, G. (2020). &quot;Desmoking laparoscopy surgery images using an image-to-image translation guided by an embedded dark channel.&quot; IEEE Access, 8, 208898–208909.'
+thumbnail: '/images/papers/2020-01-01-desmoking-laparoscopy-image-translation-dark-channel.jpg'
 ---

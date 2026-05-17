@@ -124,6 +124,50 @@ a:hover {
   font-style: italic;
 }
 
+/* Paper rows that include a thumbnail */
+.paper-row.with-thumb {
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+@media (min-width: 640px) {
+  .paper-row.with-thumb {
+    grid-template-columns: 4.5rem 3.5rem 1fr;
+  }
+  .paper-row.with-thumb .year {
+    padding-top: 0.15rem;
+  }
+}
+.paper-thumb {
+  width: 4.5rem;
+  height: 3rem;
+  object-fit: cover;
+  border: 1px solid var(--c-border);
+  background: var(--c-bg-elev);
+  transition: transform .2s ease, filter .2s ease;
+  filter: saturate(0.85);
+}
+.paper-row:hover .paper-thumb {
+  transform: scale(1.04);
+  filter: saturate(1.1);
+}
+.paper-thumb-placeholder {
+  width: 4.5rem;
+  height: 3rem;
+  border: 1px dashed var(--c-border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: var(--c-fg-muted);
+  text-align: center;
+  padding: 0 0.2rem;
+  line-height: 1.1;
+}
+
 /* "Read more" / show-all toggles */
 details > summary {
   cursor: pointer;

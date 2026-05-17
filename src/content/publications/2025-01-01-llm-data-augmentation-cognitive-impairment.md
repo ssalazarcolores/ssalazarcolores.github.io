@@ -6,4 +6,5 @@ date: 2025-01-01
 venue: 'Technologies'
 paperurl: 'https://doi.org/10.3390/technologies13080344'
 citation: 'García-Noguez, L. R., Salazar-Colores, S., Mondragón-Rodríguez, S., & Terven, J. (2025). &quot;A Novel Methodology for Data Augmentation in Cognitive Impairment Subjects Using Semantic and Pragmatic Features Through Large Language Models.&quot; Technologies, 13(8), 344.'
+thumbnail: '/images/papers/2025-01-01-llm-data-augmentation-cognitive-impairment.jpg'
 ---

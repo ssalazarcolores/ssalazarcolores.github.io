@@ -27,6 +27,23 @@ function paperLink(p: { data: { title: string; paperurl?: string } }) {
   return p.data.paperurl ?? `https://scholar.google.com/scholar?q=${encodeURIComponent(p.data.title)}`;
 }
 
+// Short venue label for the no-thumbnail placeholder
+function venueShort(venue: string): string {
+  const map: Record<string, string> = {
+    'IEEE Access': 'IEEE\nACCESS',
+    'IEEE Transactions on Image Processing': 'IEEE\nTIP',
+    'IET Image Processing': 'IET',
+    'Journal of Electronic Imaging': 'SPIE\nJEI',
+    'Computación y Sistemas': 'CyS',
+    'Pattern Recognition Letters': 'PRL\nelsevier',
+    'Cirugía y Cirujanos': 'CIR\nCIR',
+    'Industrial & Engineering Chemistry Research': 'ACS\nI&EC',
+    'Computational and Theoretical Chemistry': 'COMP\nTHEO',
+    'Brain-Computer Interfaces (book chapter)': 'BCI\nch.',
+  };
+  return map[venue] ?? venue.split(/\s+/).slice(0, 2).join('\n').toUpperCase().slice(0, 12);
+}
+
 const selectedPubs = pubsAll.slice(0, 6);
 
 const students = [
@@ -77,7 +94,14 @@ const awards = [
       <h2 class="section-label">selected work · {selectedPubs.length} of {pubsAll.length}</h2>
       <div>
         {selectedPubs.map((p) => (
-          <article class="paper-row">
+          <article class="paper-row with-thumb">
+            <a href={paperLink(p)} target="_blank" rel="noopener" aria-label={p.data.title} style="border-bottom: none;">
+              {p.data.thumbnail ? (
+                <img src={p.data.thumbnail} alt="" class="paper-thumb" loading="lazy" />
+              ) : (
+                <div class="paper-thumb-placeholder">{venueShort(p.data.venue).split('\n').map((s, i) => <span>{s}{i === 0 && <br />}</span>)}</div>
+              )}
+            </a>
             <div class="year">{p.data.date.getUTCFullYear()}</div>
             <div class="body">
               <div class="title">
@@ -159,7 +183,14 @@ const awards = [
         <div class="mb-6">
           <div class="mono text-xs mb-1 mt-4" style="color: var(--c-fg-muted);">{y}</div>
           {pubsByYear[y].map((p) => (
-            <article class="paper-row">
+            <article class="paper-row with-thumb">
+              <a href={paperLink(p)} target="_blank" rel="noopener" aria-label={p.data.title} style="border-bottom: none;">
+                {p.data.thumbnail ? (
+                  <img src={p.data.thumbnail} alt="" class="paper-thumb" loading="lazy" />
+                ) : (
+                  <div class="paper-thumb-placeholder">{venueShort(p.data.venue).split('\n').map((s, i) => <span>{s}{i === 0 && <br />}</span>)}</div>
+                )}
+              </a>
               <div class="year"></div>
               <div class="body">
                 <div class="title" style="font-size: 0.95rem;">
