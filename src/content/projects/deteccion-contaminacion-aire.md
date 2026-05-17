@@ -5,5 +5,3 @@ collection: portfolio
 ---
 
 Sistema basado en aprendizaje profundo para estimar la calidad del aire a partir de imágenes urbanas, aprovechando la relación entre la dispersión atmosférica y los patrones de turbidez visibles.
-
-**Demostración:** [Ver video en YouTube](https://www.youtube.com/watch?v=AujZP2NVa8Q)
