@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Newsreader", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  --c-bg:        #fafaf7;
+  --c-bg-elev:   #f0f0eb;
+  --c-fg:        #0a0a0a;
+  --c-fg-soft:   #3a3a3a;
+  --c-fg-muted:  #6b6b6b;
+  --c-border:    rgba(10, 10, 10, 0.08);
+  --c-accent:    #b8281d;
+  --c-accent-2:  #1d4ed8;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --c-bg:        #0a0a0a;
+  --c-bg-elev:   #141414;
+  --c-fg:        #ededed;
+  --c-fg-soft:   #c9c9c9;
+  --c-fg-muted:  #888888;
+  --c-border:    rgba(255, 255, 255, 0.1);
+  --c-accent:    #ff6b5b;
+  --c-accent-2:  #60a5fa;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--c-bg);
+  color: var(--c-fg);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--c-accent);
+  color: #fff;
+}
+
+/* Link defaults — gwern-flavored colored links */
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color .15s ease, border-color .15s ease, opacity .15s ease;
+}
+a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* Display-class headings: serif with personality */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  color: var(--c-fg);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.serif {
+  font-family: var(--font-display);
+}
+
+/* Section heading: gwern-style understated section labels */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  color: var(--c-fg-muted);
+  border-top: 1px solid var(--c-border);
+  padding-top: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Paper-row: lucasb.eyer-inspired dense rows */
+.paper-row {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--c-border);
+  align-items: baseline;
+}
+.paper-row:hover {
+  background: var(--c-bg-elev);
+}
+.paper-row .year {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--c-fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+.paper-row .body .title {
+  color: var(--c-fg);
+  font-weight: 500;
+  line-height: 1.35;
+}
+.paper-row .body .meta {
+  color: var(--c-fg-muted);
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+}
+.paper-row .body .meta em {
+  color: var(--c-fg-soft);
+  font-style: italic;
+}
+
+/* "Read more" / show-all toggles */
+details > summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--c-fg-muted);
+  list-style: none;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary:hover { color: var(--c-accent); }
+details > summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform .2s ease;
+}
+details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+/* Soft horizontal rule */
+hr {
+  border: 0;
+  border-top: 1px solid var(--c-border);
+  margin: 3rem 0;
+}
+
+/* Avatar treatment */
+.avatar {
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  filter: grayscale(15%);
+  transition: filter .3s ease;
+}
+.avatar:hover {
+  filter: grayscale(0%);
+}
+
+/* Tiny tag pills (e.g., venue badges) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  color: var(--c-fg-muted);
+  background: var(--c-bg-elev);
+  letter-spacing: 0.02em;
+}
+
+/* Brutalist link/btn */
+.btn-mono {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  border: 1px solid var(--c-border);
+  padding: 0.35rem 0.75rem;
+  color: var(--c-fg-soft);
+  background: transparent;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.btn-mono:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+/* Strong accent link variant for "see all" */
+.link-accent {
+  color: var(--c-accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Wider container for hero */
+.container-prose {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-prose {
+    padding: 0 2rem;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

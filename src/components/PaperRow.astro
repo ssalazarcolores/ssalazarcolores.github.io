@@ -1,0 +1,32 @@
+---
+interface Props {
+  year: number;
+  title: string;
+  citation: string;
+  venue: string;
+  url?: string;
+}
+const { year, title, citation, venue, url } = Astro.props;
+
+// Decode HTML entities like &quot; from frontmatter strings
+const cleanCitation = citation.replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+---
+
+<article class="paper-row">
+  <div class="year">{year}</div>
+  <div class="body">
+    <div class="title">
+      {url ? (
+        <a href={url} target="_blank" rel="noopener" style="color: var(--c-fg); border-bottom: none;">
+          {title}
+        </a>
+      ) : (
+        <span>{title}</span>
+      )}
+    </div>
+    <div class="meta">
+      <span>{cleanCitation.replace(title, "").replace(/^\s*[\.,]\s*/, "").replace(/^\(\d{4}\)\.?\s*/, "").replace(/&quot;.*?&quot;\.?\s*/, "").trim()}</span>
+      <span class="pill ml-1">{venue}</span>
+    </div>
+  </div>
+</article>

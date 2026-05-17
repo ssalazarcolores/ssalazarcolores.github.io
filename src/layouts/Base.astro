@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Dr. Sebastián Salazar-Colores",
+  description = "Investigador en el Centro de Investigaciones en Óptica (CIO). Aprendizaje profundo aplicado a imagen médica, agricultura de precisión y procesamiento de señales biomédicas.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Sebastián Salazar-Colores" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ssalazarcolores.github.io/" />
+    <meta property="og:image" content="https://ssalazarcolores.github.io/images/profile.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" type="image/png" href="/images/profile.png" />
+    <link rel="canonical" href="https://ssalazarcolores.github.io/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body>
+    <slot />
+    <script is:inline>
+      window.toggleTheme = function () {
+        var cur = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        var next = cur === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        var icon = document.getElementById("theme-icon");
+        if (icon) icon.textContent = next === "dark" ? "☀" : "◐";
+      };
+    </script>
+  </body>
+</html>
